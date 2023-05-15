@@ -1,0 +1,64 @@
+
+<head>
+  <link rel="stylesheet" type="text/css" href="saisie_infos_patient.css">
+</head>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Enregistrement rendez-vous</title>
+  </head>
+  <body>
+    <div id="header">
+      <img src="logo1.png" id="logo1" alt="Logo 1">
+      <img src="logo2.png" id="logo2" alt="Logo 2" style="float: right;">
+    </div>
+    <div id="main-content">
+      <h1>Enregistrement rendez-vous</h1>
+      <form id="appointment-form">
+        <label for="ssn">Numéro de sécurité sociale:</label>
+        <input type="text" id="ssn" name="ssn">
+        <br>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age">
+        <br>
+        <label for="sexe">Sexe:</label>
+        <select id="sexe" name="sexe">
+          <option value="homme">Homme</option>
+          <option value="femme">Femme</option>
+        </select>
+        <br>
+        <label for="nom-chirurgien">Nom du chirurgien:</label>
+        <input type="text" id="nom-chirurgien" name="nom-chirurgien">
+        <br>
+        <label for="diagnostique">Diagnostique principal:</label>
+        <input type="text" id="diagnostique" name="diagnostique">
+        <br>
+        <label for="acte-prevue">Acte prévu:</label>
+        <input type="text" id="acte-prevue" name="acte-prevue">
+        <br>
+        <input type="submit" value="Soumettre">
+      </form>
+    </div>
+    <script>
+
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch('/submit', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      });
+
+    </script>
+  </body>
+</html>

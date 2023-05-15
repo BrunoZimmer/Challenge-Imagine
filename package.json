@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "react-bootstrap": "^2.7.0",
+    "react-router-dom": "^6.6.2",
+    "reactstrap": "^9.1.5",
+    "yup": "^0.32.11"
+  }
+}
